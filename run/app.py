@@ -26,6 +26,7 @@ try:
 
     MONLIGHT_SCREEN_NUMBER = int(os.getenv('MONLIGHT_SCREEN_NUMBER'))
     MONLIGHT_ANALYZE_ENTIRE_SCREEN = bool(os.getenv('MONLIGHT_ANALYZE_ENTIRE_SCREEN'))
+    MONLIGHT_TIMER = int(os.getenv('MONLIGHT_TIMER'))
 
 except Exception as e:
     print('There is an error in the configuration file')
@@ -51,11 +52,7 @@ except Exception as e:
 
 if __name__ == "__main__":
 
-    monitor = Monitor(1)  
-    print(monitor.get_monitor_id())
-    print(monitor.get_monitor_bounding_box())
-    print(monitor.get_monitor_average_color())
-
+    monitor = Monitor(MONLIGHT_SCREEN_NUMBER)  
     homeassistant = HomeAssistant(
         HOMEASSISTANT_IP,
         HOMEASSISTANT_PORT,
@@ -65,11 +62,7 @@ if __name__ == "__main__":
         HOMEASSISTANT_LIGHT_BRIGHTNESS
     )
 
-    homeassistant.confirm_connection_to_homeassistant_server()
-    homeassistant.get_current_light_state()
-    homeassistant.set_new_light_color((0, 100, 200))
-    exit()
-
     while(True):
-        
-        sleep(5)
+        rgb = monitor.get_monitor_average_color()
+        homeassistant.set_new_light_color(rgb)
+        sleep(MONLIGHT_TIMER)
