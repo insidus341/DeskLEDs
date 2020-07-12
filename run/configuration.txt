@@ -22,7 +22,7 @@ HOMEASSISTANT_API_TOKEN=''
 HOMEASSISTANT_LIGHT_ID='light.study'
 
 # How bright should the light be? 0-255 (255 = Max)
-HOMEASSISTANT_LIGHT_BRIGHTNESS=120
+HOMEASSISTANT_LIGHT_BRIGHTNESS=180
 
 
 
@@ -32,7 +32,7 @@ HOMEASSISTANT_LIGHT_BRIGHTNESS=120
 
 # Which screen should MonLight analyze?
 # The selection matches the numbering on the Windows Display Settings
-MONLIGHT_SCREEN_NUMBER=1
+MONLIGHT_SCREEN_NUMBER=2
 
 # Should MonLight analyze the entire screen to find an average colour?
 # This uses more CPU resources. Leave at False if you have a slow CPU
@@ -40,5 +40,5 @@ MONLIGHT_SCREEN_NUMBER=1
 # 'True' or 'False'
 MONLIGHT_ANALYZE_ENTIRE_SCREEN='False'
 
-# How many seconds between light updates (default 5)
-MONLIGHT_TIMER=5
+# How many seconds between light updates (default 1)
+MONLIGHT_TIMER=1

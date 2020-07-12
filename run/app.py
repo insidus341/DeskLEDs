@@ -26,29 +26,12 @@ try:
 
     MONLIGHT_SCREEN_NUMBER = int(os.getenv('MONLIGHT_SCREEN_NUMBER'))
     MONLIGHT_ANALYZE_ENTIRE_SCREEN = bool(os.getenv('MONLIGHT_ANALYZE_ENTIRE_SCREEN'))
-    MONLIGHT_TIMER = int(os.getenv('MONLIGHT_TIMER'))
+    MONLIGHT_TIMER = float(os.getenv('MONLIGHT_TIMER'))
 
 except Exception as e:
     print('There is an error in the configuration file')
     print(e) # Print the error
     exit()
-    
-
-# def update_light_color(red, green, blue):
-#     print(red)
-#     url = f"{HOMEASSISTANT_PROTOCOL}://{HOMEASSISTANT_IP}:{HOMEASSISTANT_PORT}/api/services/light/turn_on"
-#     data = {
-#         "entity_id": HOMEASSISTANT_LIGHT_ID,
-#         "rgb_color": [
-#             red,
-#             green,
-#             blue
-#         ],
-#         "brightness": HOMEASSISTANT_LIGHT_BRIGHTNESS
-#     }
-
-#     response = requests.post(url, json=data, headers=headers, verify=False)
-#     print(response.status_code)
 
 if __name__ == "__main__":
 
