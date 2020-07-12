@@ -32,7 +32,7 @@ HOMEASSISTANT_LIGHT_BRIGHTNESS=50
 
 # Which screen should MonLight analyze?
 # The selection matches the numbering on the Windows Display Settings
-MONLIGHT_SCREEN_NUMBER=2
+MONLIGHT_SCREEN_NUMBER=1
 
 # Should MonLight analyze the entire screen to find an average colour?
 # This uses more CPU resources. Leave at False if you have a slow CPU
