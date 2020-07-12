@@ -19,10 +19,10 @@ HOMEASSISTANT_API_TOKEN=''
 
 # The ID handler for the light to change
 # Example: 'light.study'
-HOMEASSISTANT_LIGHT_ID='light.study'
+HOMEASSISTANT_LIGHT_ID='light.sofa_led'
 
 # How bright should the light be? 0-255 (255 = Max)
-HOMEASSISTANT_LIGHT_BRIGHTNESS=180
+HOMEASSISTANT_LIGHT_BRIGHTNESS=120
 
 
 

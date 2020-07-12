@@ -58,7 +58,7 @@ class HomeAssistant:
     def set_new_light_color(self, rgb):
         url = f"{self.__get_base_url()}services/light/turn_on"
         payload = {
-            "entity_id": "light.study",
+            "entity_id": self.HOMEASSISTANT_LIGHT_ID,
             "rgb_color": [
                         rgb[0],
                         rgb[1],
