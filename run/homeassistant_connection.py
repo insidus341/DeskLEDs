@@ -1,7 +1,9 @@
 import requests
 import json
 
-class HomeAssistant:
+from abc import ABC, abstractmethod
+
+class HomeAssistantABC(ABC):
 
     def __init__(self, HOMEASSISTANT_IP, 
     HOMEASSISTANT_PORT, 
@@ -15,6 +17,21 @@ class HomeAssistant:
         self.HOMEASSISTANT_API_TOKEN = HOMEASSISTANT_API_TOKEN
         self.HOMEASSISTANT_LIGHT_ID = HOMEASSISTANT_LIGHT_ID
         self.HOMEASSISTANT_LIGHT_BRIGHTNESS = HOMEASSISTANT_LIGHT_BRIGHTNESS
+
+    @abstractmethod
+    def confirm_connection_to_homeassistant_server(self):
+        pass
+
+    @abstractmethod
+    def get_current_light_state(self):
+        pass
+
+    @abstractmethod
+    def set_new_light_color(self):
+        pass
+
+
+class HomeAssistant(HomeAssistantABC):
 
     def __get_rest_headers(self):
         headers = {

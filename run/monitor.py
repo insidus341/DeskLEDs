@@ -1,12 +1,33 @@
 from screeninfo import get_monitors
 from PIL import Image, ImageGrab
+from abc import ABC, abstractmethod
 
-class Monitor():
-
+class MonitorABC(ABC):
     def __init__(self, monitor_number = 1):
         self.monitor_number = monitor_number
         self.select_monitor()
         self.monitor_bbox_offset = 100
+
+    def select_monitor(self):
+        pass
+
+    def get_monitor_bounding_box(self):
+        pass
+
+    def get_monitor_bounding_box_top_left(self):
+        pass
+
+    def get_monitor_bounding_box_bottom_right(self):
+        pass
+
+    def get_pixel_list(self):
+        pass
+
+    def get_monitor_average_color(self):
+        pass
+
+
+class Monitor(MonitorABC):
 
     def __get_monitor_details_id(self):
         def function_wrapper(self):

@@ -15,8 +15,13 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 # Import our system variables and check their type()
 try: 
-    load_dotenv('configuration.txt')
+    load_dotenv('./run/configuration.txt')
+    HOMEASSISTANT_IP = str(os.getenv('HOMEASSISTANT_IP'))
 
+except Exception as e:
+    print('There is no configuration file. Loading from envrionmentals instead')
+
+finally:
     HOMEASSISTANT_IP = str(os.getenv('HOMEASSISTANT_IP'))
     HOMEASSISTANT_PORT = int(os.getenv('HOMEASSISTANT_PORT'))
     HOMEASSISTANT_PROTOCOL = str(os.getenv('HOMEASSISTANT_PROTOCOL'))
@@ -28,10 +33,6 @@ try:
     MONLIGHT_ANALYZE_ENTIRE_SCREEN = bool(os.getenv('MONLIGHT_ANALYZE_ENTIRE_SCREEN'))
     MONLIGHT_TIMER = float(os.getenv('MONLIGHT_TIMER'))
 
-except Exception as e:
-    print('There is an error in the configuration file')
-    print(e) # Print the error
-    exit()
 
 if __name__ == "__main__":
 
