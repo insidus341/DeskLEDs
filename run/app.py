@@ -14,7 +14,7 @@ from homeassistant_connection import HomeAssistant
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 # Import our system variables and check their type()
-try: 
+try:
     load_dotenv('configuration.txt')
 
     HOMEASSISTANT_IP = str(os.getenv('HOMEASSISTANT_IP'))
@@ -35,7 +35,7 @@ except Exception as e:
 
 if __name__ == "__main__":
 
-    monitor = Monitor(MONLIGHT_SCREEN_NUMBER)  
+    monitor = Monitor(MONLIGHT_SCREEN_NUMBER)
     homeassistant = HomeAssistant(
         HOMEASSISTANT_IP,
         HOMEASSISTANT_PORT,
@@ -45,7 +45,13 @@ if __name__ == "__main__":
         HOMEASSISTANT_LIGHT_BRIGHTNESS
     )
 
+    oldrgb = (0, 0, 0)
     while(True):
         rgb = monitor.get_monitor_average_color()
-        homeassistant.set_new_light_color(rgb)
-        sleep(MONLIGHT_TIMER)
+        if rgb == oldrgb:
+            print("Value hasn't changed")
+            sleep(MONLIGHT_TIMER)
+        else:
+            homeassistant.set_new_light_color(rgb)
+            oldrgb = rgb
+            sleep(MONLIGHT_TIMER)
